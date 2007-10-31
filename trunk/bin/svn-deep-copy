@@ -1,8 +1,11 @@
 #!/bin/env ruby
 
-require 'rubygems'
-require 'svn/deep_copy'
-#require File.join(File.dirname(__FILE__),"..","lib","svn","deep_copy")
+if File.exist?(File.join(File.dirname(__FILE__),"..","lib","svn","deep_copy.rb"))
+  require File.join(File.dirname(__FILE__),"..","lib","svn","deep_copy")
+else
+  require 'rubygems'
+  require 'svn/deep_copy'
+end
 
 svn_path_from = ARGV[0]
 svn_path_to = ARGV[1]
@@ -10,8 +13,6 @@ if( svn_path_from.nil? or svn_path_to.nil? )
   STDERR.puts "Usage: #{ARGV[0]} svn_path_from svn_path_to"
   exit(1)
 end
-
-puts "Copying #{svn_path_from} to #{svn_path_to}"
 
 svn_copy = SVN::DeepCopy.new
 svn_copy.copy( svn_path_from, svn_path_to )
