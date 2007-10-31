@@ -1,0 +1,6 @@
+https://source.revolutionhealth.com/svn/rhg/applications/ruby/newsletters/trunk/vendor/plugins - rails_rcov                    http://svn.codahale.com/rails_rcov
+mocha                         svn://rubyforge.org/var/svn/mocha/trunk
+
+https://source.revolutionhealth.com/svn/rhg/applications/ruby/newsletters/trunk/test/fixtures - content https://source.revolutionhealth.com/svn/rhg/portal/content/trunk/test/fixtures/content
+
+

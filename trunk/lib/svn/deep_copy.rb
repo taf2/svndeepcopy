@@ -11,7 +11,6 @@ module SVN
     # only when the externals are from remove paths does it lose the history
     def copy( from_svn_path, to_svn_path, options = {} )
 
-      #puts "copy( '#{from_svn_path}', '#{to_svn_path}')"
       if svn_repository_equal?(from_svn_path, to_svn_path)
         svn_copy(from_svn_path, to_svn_path)
 
@@ -62,7 +61,7 @@ module SVN
       end
 
       def svn_repository_equal?(path1,path2)
-        svn_info(path1)["Repository UUID"] == svn_info(path2)["Repository UUID"]
+        svn_info(path1)["repository uuid"] == svn_info(path2)["repository uuid"]
       end
 
       def svn_resolve_to_url(path)
@@ -106,8 +105,10 @@ module SVN
       end
 
       def svn_info(path)
-        svn_info = `svn info #{path}`
+        svn_info = capture_invoked("svn info #{path}")
         info = {}
+        return info if svn_info.nil?
+
         svn_info.split(/\n/).each do|kv|
           kv = kv.split(/: /)
           info[kv[0].downcase] = kv[1]
