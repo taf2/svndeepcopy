@@ -1,6 +1,8 @@
 #!/bin/env ruby
 
-require File.join(File.dirname(__FILE__),"..","lib","svn","deep_copy")
+require 'rubygems'
+require 'svn/deep_copy'
+#require File.join(File.dirname(__FILE__),"..","lib","svn","deep_copy")
 
 svn_path_from = ARGV[0]
 svn_path_to = ARGV[1]

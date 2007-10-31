@@ -29,8 +29,8 @@ module SVN
         end
       else
         # TODO: support this
-        #from_url = svn_resolve_to_url(from_svn_path)
-        #to_url = svn_resolve_to_url(to_svn_path)
+        from_url = svn_resolve_to_url(from_svn_path)
+        to_url = svn_resolve_to_url(to_svn_path)
       end
 
     end
