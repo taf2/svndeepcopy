@@ -1,0 +1,17 @@
+https://source.revolutionhealth.com/svn/rhg/services/ruby/groups_service/trunk - app https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/app
+db https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/db
+doc https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/doc
+lang https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/lang
+lib https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/lib
+log https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/log
+public https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/public-service
+script https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/script
+tmp https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/tmp
+vendor https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/vendor
+
+https://source.revolutionhealth.com/svn/rhg/services/ruby/groups_service/trunk/test/functional - services https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/test/functional/services
+
+https://source.revolutionhealth.com/svn/rhg/services/ruby/groups_service/trunk/test/integration - services https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/test/integration/services
+
+https://source.revolutionhealth.com/svn/rhg/services/ruby/groups_service/trunk/test - fixtures https://source.revolutionhealth.com/svn/rhg/applications/ruby/groups/trunk/test/fixtures
+
