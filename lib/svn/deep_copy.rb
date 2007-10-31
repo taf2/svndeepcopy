@@ -9,12 +9,16 @@ module SVN
 
     # has the same calling semantics as svn cp, but brings all externals and  preserves as much of the history as possible
     # only when the externals are from remove paths does it lose the history
-    def copy( from_svn_path, to_svn_path, options = {} )
+    def copy( from_svn_path, to_svn_path, extern_info = {} )
 
       if svn_repository_equal?(from_svn_path, to_svn_path)
+        puts "Copying #{from_svn_path} to #{to_svn_path}"
         svn_copy(from_svn_path, to_svn_path)
+        puts "Copied #{from_svn_path} to #{to_svn_path}"
 
         externals = svn_externals(to_svn_path)
+
+        puts "Has externals => #{externals.inspect}"
 
         # copy each external
         externals.each do|external|
@@ -24,13 +28,20 @@ module SVN
           external[:externals].each do|extern|
             to_path = switch_svn_path_base( extern[:to_path], from_svn_path, to_svn_path )
             from_path = extern[:from_path]
-            make_copy( from_path, to_path )
+            make_copy( from_path, to_path, extern )
           end
         end
       else
+        puts "Remote call!"
         # TODO: support this
         from_url = svn_resolve_to_url(from_svn_path)
         to_url = svn_resolve_to_url(to_svn_path)
+        puts extern_info.inspect
+        # svn export from_url
+        puts("svn export #{from_url} #{from_svn_path}")
+        # svn add to_url
+        puts("svn import #{from_svn_path} #{to_url}")
+        # svn commit to_url
       end
 
     end
@@ -61,7 +72,7 @@ module SVN
       end
 
       def svn_repository_equal?(path1,path2)
-        svn_info(path1)["repository uuid"] == svn_info(path2)["repository uuid"]
+        svn_info(path1)["repository uuid"] == svn_info(File.dirname(path2))["repository uuid"]
       end
 
       def svn_resolve_to_url(path)
@@ -100,8 +111,8 @@ module SVN
       end
 
       def svn_copy(from,to)
-        puts "don't call it"
-        #system("svn copy #{from} #{to}")
+        puts "Calling copy #{from} #{to}"
+        system("svn copy #{from} #{to} -m 'tagging' ")
       end
 
       def svn_info(path)
